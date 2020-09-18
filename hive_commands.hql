@@ -1,6 +1,9 @@
 --Static Partitioning:
-INSERT INTO TABLE employees_partitioned PARTITION(department='A') SELECT EmployeeID, FirstName, JobTitle, Salary FROM employees_staging WHERE department='A'; 
-INSERT INTO TABLE employees_partitioned PARTITION (department='B') SELECT EmployeeID, FirstName, JobTitle, Salary FROM employees_staging WHERE department='B';
+INSERT INTO TABLE employees_partitioned PARTITION(department='A') 
+SELECT EmployeeID, FirstName, JobTitle, Salary FROM employees_staging WHERE department='A'; 
+
+INSERT INTO TABLE employees_partitioned PARTITION (department='B') 
+SELECT EmployeeID, FirstName, JobTitle, Salary FROM employees_staging WHERE department='B';
 
 --Changing it to Dynamic Partitioning:
 SET hive.exec.dynamic.partition = true; 
