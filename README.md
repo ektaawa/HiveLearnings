@@ -31,6 +31,9 @@ You do not mention Hard coded value to be inserted into partition column in your
 Added advantage of external tables is that if we drop the table it will not delete the data from S3. Another advantage of external table is that multiple cluster and Big data engines (like Presto, Spark, Athena) can all work on data in parallel.
 
 **Bucketing-**
-Much like partitioning, bucketing is a technique that allows you to cluster or segment large sets of data to optimize query performance.
-
+Much like partitioning, bucketing is a technique that allows you to cluster or segment large sets of data to optimize query performance. Even after partitioning the data, what if still the data is huge? Then we can use buckets to give the best optimization.
+Hashing algorithm is used internally to decide which data will go to which bucket.
+It works well when used along with partitioning i.e. we create partitions and inside that data is stored in buckets.
+Buckets can also be used alone. Bucketing can sometimes be more efficient when used alone. For example- Instead of creating 100 partitions(**directories**), we can create 100 buckets(**files**).
+Whatever number of buckets you provide, those will be the number of reducers.Example- 4 buckets then 4 reduce tasks are created.
 
